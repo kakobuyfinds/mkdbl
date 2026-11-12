@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>ACBuy spreadsheet – danske tips til produktlinks og QC</title>
+<meta name="description" content="Brug ACBuy spreadsheet til at sammenligne produktlinks, størrelser og QC-billeder. Se ti varekategorier og beregn dit budget i danske kroner.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="da_DK">
+<meta property="og:title" content="ACBuy spreadsheet – danske tips til produktlinks og QC">
+<meta property="og:description" content="En dansk guide til varelinks, mål, kvalitetsbilleder og budget.">
+<meta name="theme-color" content="#f6f2e9">
+<!--
+Redaktionelt grundlag: Bing blev forespurgt, men leverede ingen verificerbare
+førstesideresultater. Ti relevante søgeresultater dannede grundlag for emnevalget:
+acbuy.net (varelinks og købsgang), acbuy.io (QC og kategorier),
+acbuynet.com (QC-referencer og produktlinks), ac-sheet.com (kategorioversigt),
+grails.fit (søgning på mærke og sælger), acbuysspreadsheets.com (QC-søgning),
+sopel.fit (valg af variant), acbuy.dev (links fra markedspladser),
+acbuy.org (QC-billeder og valuta), acbuy.pics (billedgallerier).
+Sekundære søgefraser: ACBuy-guide, ACBuy-produktlinks,
+ACBuy QC-billeder, ACBuy-fragt til Danmark.
+-->
+<style>
+:root{color-scheme:light;--bg:#f6f2e9;--ink:#20222a;--blue:#263a80;--muted:#4d5262;--line:#d7d4cd;--paper:#fffdf8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:var(--blue);text-underline-offset:.22em}
+a:focus-visible,summary:focus-visible{outline:3px solid #5b45bc;outline-offset:4px}
+h1,h2,h3,p,figure{margin:0}
+h1,h2{line-height:1.06;letter-spacing:-.045em}
+h1{font-size:clamp(2.85rem,7vw,6.2rem);overflow-wrap:anywhere}
+h2{font-size:clamp(1.8rem,4vw,3rem)}
+h3{line-height:1.25;font-size:1.24rem}
+p{max-width:68ch}
+.wrap{width:min(72rem,calc(100% - 2rem));margin-inline:auto}
+.top{border-bottom:1px solid var(--line);padding:.9rem 0}
+.top .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.4rem 1rem;align-items:center}
+.logo{font-weight:800;text-decoration:none;letter-spacing:.02em}
+.top small,figcaption,footer p{color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.25rem,4vw,4rem);align-items:center;padding-block:clamp(1.8rem,5vw,4rem)}
+.hero p{margin-top:1rem;font-size:1.08rem}
+.cta{display:inline-block;margin-top:1.25rem;padding:.65rem 1.05rem;background:var(--blue);color:white;border-radius:.4rem;font-weight:700}
+img{display:block;width:100%;height:auto;background:#eeeae3}
+.hero img{aspect-ratio:4/3;object-fit:contain;border-radius:.6rem}
+figcaption{font-size:.87rem;padding-top:.4rem}
+.categories{background:#e8edff;border-block:1px solid #cbd4f3;padding:1.65rem 0 1.85rem}
+.links{list-style:none;padding:0;margin:1.05rem 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,10.5rem),1fr));gap:.5rem}
+.links a{display:block;height:100%;padding:.54rem .65rem;border:1px solid #bcc8eb;border-radius:.4rem;background:#f8faff;font-weight:650}
+.links a:hover{background:#d9e3ff}
+.block{padding-block:clamp(2rem,5vw,3.75rem);border-bottom:1px solid var(--line)}
+.block>p{margin-top:.75rem}
+.gallery,.articles{display:grid;gap:1rem;margin-top:1.2rem}
+.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+.gallery img{aspect-ratio:1;object-fit:contain;border-radius:.45rem}
+.articles{grid-template-columns:repeat(3,minmax(0,1fr))}
+article{padding:1.15rem;background:var(--paper);border:1px solid var(--line);border-radius:.5rem}
+article p,details p{margin-top:.6rem}
+details{border-bottom:1px solid var(--line);padding:.8rem 0}
+details:first-of-type{margin-top:.75rem}
+summary{cursor:pointer;font-weight:750}
+footer{padding-block:1.5rem}
+@media(max-width:49rem){.articles{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:38rem){.hero{grid-template-columns:1fr}.hero img{max-height:15rem}}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"WebPage","name":"ACBuy spreadsheet – danske tips til produktlinks og QC","description":"Brug ACBuy spreadsheet til at sammenligne produktlinks, størrelser og QC-billeder. Se ti varekategorier og beregn dit budget i danske kroner.","inLanguage":"da"},
+    {"@type":"FAQPage","name":"Spørgsmål om produktlinks, QC og fragt","inLanguage":"da","mainEntity":[
+      {"@type":"Question","name":"Hvad er et ACBuy spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"Det er en oversigt, som typisk samler produktlinks og kan indeholde kategorier, varianter og QC-billeder. Tjek altid oplysningerne hos sælgeren, da links og varianter kan ændre sig."}},
+      {"@type":"Question","name":"Hvad viser QC-billeder?","acceptedAnswer":{"@type":"Answer","text":"QC-billeder viser den fotograferede vares synlige detaljer, f.eks. syninger, såler og mærkater. Brug billeder af din egen vare, når de findes. Billeder alene kan ikke bekræfte ægthed."}},
+      {"@type":"Question","name":"Hvordan sammenligner jeg fragt til Danmark?","acceptedAnswer":{"@type":"Answer","text":"Sammenlign tilbud til samme adresse med de samme pakkemål. Tjek vægtgrundlag, valuta, leveringstid og hvad beløbet dækker. Brug derefter samme valutakurs til at regne tilbuddene om til DKK."}},
+      {"@type":"Question","name":"Hvor fører varekategorierne hen?","acceptedAnswer":{"@type":"Answer","text":"De ti kategorier åbner Hipobuyfinds katalog. Guiden er uafhængig af ACBuy."}}
+    ]}
+  ]
+}
+</script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/mkdbl/">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="https://www.hipobuyfind.com">hipobuyfind.com</a>
+    <small>Dansk indkøbsguide</small>
+  </div>
+</header>
+<main>
+  <section class="hero wrap" aria-labelledby="titel">
+    <div>
+      <h1 id="titel">ACBuy spreadsheet</h1>
+      <p>Et ACBuy spreadsheet er en oversigt over produktlinks. Denne ACBuy-guide hjælper dig med at bruge oversigten til at finde varer, sammenligne mål og læse QC-billeder, før du beslutter dig.</p>
+      <a class="cta" href="https://www.hipobuyfind.com">Åbn Hipobuyfind</a>
+    </div>
+    <figure>
+      <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d%2Cc_scale%2Cfl_relative%2Cw_1.0%2Ch_1.0%2Cfl_layer_apply/34dc620c-8c7b-42b5-bd3c-0c6c42c6ff2b/W%2BAIR%2BFORCE%2B1%2B%2707%2BNEXT%2BNATURE.png" width="592" height="444" fetchpriority="high" alt="Hvid Nike Air Force 1 ’07 Next Nature set fra siden">
+      <figcaption>Nike Air Force 1 ’07 Next Nature · modelreference</figcaption>
+    </figure>
+  </section>
+
+  <nav class="categories" aria-labelledby="kategorier">
+    <div class="wrap">
+      <h2 id="kategorier">Varekategorier</h2>
+      <ul class="links">
+        <li><a href="https://hipobuyfind.com/category-911-Shoes.html">Sko</a></li>
+        <li><a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html">Hættetrøjer og strik</a></li>
+        <li><a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-shirts</a></li>
+        <li><a href="https://hipobuyfind.com/category-914-Jackets.html">Jakker</a></li>
+        <li><a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html">Bukser og shorts</a></li>
+        <li><a href="https://hipobuyfind.com/category-916-Headwear.html">Kasketter og huer</a></li>
+        <li><a href="https://hipobuyfind.com/category-917-Sets.html">Sæt</a></li>
+        <li><a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html">Undertøj</a></li>
+        <li><a href="https://hipobuyfind.com/category-919-Jersey.html">Spillertrøjer</a></li>
+        <li><a href="https://hipobuyfind.com/category-920-Accessories.html">Tilbehør</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <section class="block" aria-labelledby="artikler">
+      <h2 id="artikler">Fra produktlink til købsbeslutning</h2>
+      <div class="articles">
+        <article>
+          <h3>Sådan tjekker du et produktlink</h3>
+          <p>Ved søgning efter ACBuy-produktlinks kan en række henvise til en vare på Weidian, Taobao eller 1688. Sammenlign sælgernavn, varenummer og modelnavn med opslaget, før du gemmer linket.</p>
+          <p>Kontrollér lagerstatus for den valgte størrelse og farve. Ved et udløbet produktlink kan du søge på varenummeret og sammenligne billederne af den nye vare. Samme produktfoto kan bruges til flere varianter.</p>
+        </article>
+        <article>
+          <h3>Størrelsesguide og QC-billeder</h3>
+          <p>Ved valg af sneakerstørrelse kan du sammenligne indersålens længde i centimeter med et par, der passer dig. For en hoodie eller jakke kan du måle brystbredde, skulderbredde og ærmelængde på et stykke tøj, du allerede ejer.</p>
+          <p>Brug ACBuy QC-billeder til at tjekke syninger på tøj, slidmønster på såler og tryk på spillertrøjer. På en kasket kan du se efter en skæv skygge. Ved smykker kan et nærbillede vise låsen og eventuelle ridser i overfladen.</p>
+        </article>
+        <article>
+          <h3>Budget for ACBuy-fragt til Danmark</h3>
+          <p>Skriv varepris, lokal fragt, international fragt og eventuelle gebyrer på hver sin linje. Omregn fra CNY eller den viste valuta til DKK med den samme kurs, så du kan sammenligne den forventede totalpris.</p>
+          <p>Ved valg af fragtmetode bør du tjekke, om prisen beregnes ud fra fysisk vægt eller volumenvægt. Sammenhold pakkemål og leveringsestimat, og undersøg om moms, eventuel told og transportørens håndteringsgebyr er med i overslaget.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="referencer">
+      <h2 id="referencer">Modelreferencer til tøj og tilbehør</h2>
+      <p>Brug referencebillederne til at genkende snit, mønstre og beslag, når du sammenligner vareopslag. Tjek altid billeder og mål for den konkrete vare.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://fr.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-blouson-monogram-zippe--HTB47EURC853_PM2_Front%20view.jpg?wid=420" width="420" height="420" loading="lazy" decoding="async" alt="Beige Louis Vuitton-monogramjakke med lynlås set forfra">
+          <figcaption>Louis Vuitton · monogramjakke</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1751298339/838745_3HBC4_2600_001_100_0000_Light.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Gucci-baseballkasket med GG-mønster">
+          <figcaption>Gucci · GG-kasket</figcaption>
+        </figure>
+        <figure>
+          <img src="https://www.oliverjewellery.ca/cdn/shop/files/Hermes-Palladium-Plated-Orange-Enamel-Clic-H-Bracelet-w-Box_f80dab0b.jpg?v=1744110722&amp;width=420" width="420" height="420" loading="lazy" decoding="async" alt="Orange Hermès Clic H-armbånd med H-formet spænde">
+          <figcaption>Hermès · Clic H-armbånd</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/E1594CDNMTD300_E01-4?wid=420&amp;hei=420&amp;qlt=78" width="420" height="420" loading="lazy" decoding="async" alt="Dior CD Navy-ørestikker med de sammenflettede bogstaver C og D">
+          <figcaption>Dior · CD Navy-ørestikker</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="faq">
+      <h2 id="faq">Spørgsmål om produktlinks, QC og fragt</h2>
+      <details open>
+        <summary>Hvad er et ACBuy spreadsheet?</summary>
+        <p>Det er en oversigt, som typisk samler produktlinks og kan indeholde kategorier, varianter og QC-billeder. Tjek altid oplysningerne hos sælgeren, da links og varianter kan ændre sig.</p>
+      </details>
+      <details>
+        <summary>Hvad viser QC-billeder?</summary>
+        <p>QC-billeder viser den fotograferede vares synlige detaljer, f.eks. syninger, såler og mærkater. Brug billeder af din egen vare, når de findes. Billeder alene kan ikke bekræfte ægthed.</p>
+      </details>
+      <details>
+        <summary>Hvordan sammenligner jeg fragt til Danmark?</summary>
+        <p>Sammenlign tilbud til samme adresse med de samme pakkemål. Tjek vægtgrundlag, valuta, leveringstid og hvad beløbet dækker. Brug derefter samme valutakurs til at regne tilbuddene om til DKK.</p>
+      </details>
+      <details>
+        <summary>Hvor fører varekategorierne hen?</summary>
+        <p>De ti kategorier åbner Hipobuyfinds katalog. Guiden er uafhængig af ACBuy.</p>
+      </details>
+    </section>
+  </div>
+</main>
+<footer class="wrap">
+  <p>Billederne viser modelreferencer. <a href="https://www.hipobuyfind.com">Besøg hipobuyfind.com</a>.</p>
+</footer>
+</body>
+</html>
